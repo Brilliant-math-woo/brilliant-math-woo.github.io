@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<title>Brilliant Home</title>
+<style>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color:white;
+    font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+}
+
+header {
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航栏*/
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航栏logo*/
+.navbar .logo {
+    margin-left: 3%;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+/*导航栏导航页*/
+.navbar .nav-links{
+   margin-left: -5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航页间距*/
+.navbar .nav-links a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+/*某些页面icon*/
+.home-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航栏搜索框*/
+.search-bar{
+    position: relative;
+}
+
+.search-bar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/*导航栏其他元素*/
+.cta-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .cta-buttons a{
+    margin-right: 50px;
+}
+
+.cta-buttons .start-trial {
+    margin-left: -70%;
+    font-size: smaller;
+    display: inline-block;  
+    border: 2px solid green; 
+    background-color: transparent; 
+    color: green; 
+    font-weight: bold; 
+    padding: 10px 20px;
+    border-radius: 20px; 
+    cursor: pointer; 
+    text-align: center; 
+}
+
+.cta-buttons .start-trial:hover{
+    background-color: green; /* 悬停时填充绿色 */
+    color: white; /* 悬停时字体变为白色 */
+}
+
+.stats {
+    margin-left: 19%;
+    display: flex;
+    align-items: center;
+}
+
+.stats span {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.menu-icon {
+    margin-left: 9%;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.mmicon {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.mmicon:hover {
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+.mmicon.active {
+    color: black;
+    border-bottom: 2px solid black;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Euler-tell{
+    width: 90%;
+    margin-top: 3%;
+    margin-left: 5%;
+    padding: 20px;
+}
+
+.send-button {
+    background-color: #4CAF50; 
+    border: none; 
+    color: white; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px;
+    margin: 10px 2px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition-duration: 0.3s; 
+}
+
+.send-button:hover {
+    background-color: #45a049; 
+}
+
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.my-message, .other-message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.my-message {
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.other-message {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.avatar_Euler{
+    width: 70px;
+    height: 87.5px;
+    border-radius: 30%;
+    margin-left: 10px;
+}
+
+.message-box {
+    max-width: 60%;
+    padding: 15px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  
+    margin: 5px 0;
+    word-wrap: break-word;
+}
+
+.my-box {
+    background: linear-gradient(135deg, #81d4fa, #0288d1); 
+    color: white;
+    text-align: left;
+}
+
+.other-box {
+    background: linear-gradient(135deg, #ffcc80, #fb8c00);  
+    color: white;
+    text-align: left;
+    text-align: left;
+    border-radius: 20px;
+    padding: 15px;
+    position: relative;
+    max-width: 70%;
+}
+
+
+.my-box::after, .other-box::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.my-box::after {
+    border-width: 10px 15px 10px 0;
+    border-color: transparent #81d4fa transparent transparent;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.other-box::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent #ffcc80;
+    border-style: solid;
+}
+
+
+.learn-path {
+    width: 90%;
+    margin-top: 3%;
+    margin-left: 5%;
+    padding: 20px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: gray;
+    margin-bottom: 40px;
+}
+
+.path {
+    position: relative;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    height: 20vh; 
+    margin-bottom: 5%;
+    transition: background-color 0.3s ease; 
+}
+
+.path:hover {
+    background-color: #f0f0f0; 
+    border-color: #dcdcdc; 
+}
+
+.path::after {
+    content: '';
+    position: absolute;
+    bottom: -10%; 
+    left: 0;
+    width: 100%;
+    height: 1px; 
+    background-color: #dcdcdc; 
+}
+
+.recommended {
+    background-color: #e5f1ff;
+    color: #0070c9;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bolder;
+    width: 50px;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+.icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 50px;
+}
+        
+.path-content {      
+    display: flex;
+    align-items: center;
+}
+  
+.path-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.path-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.path-desc {
+    font-size: 14px;
+    color: gray;
+    margin-left: 150px;
+    margin-top: -20px;
+}
+
+.view-path-btn {
+            padding: 10px 20px;
+            border: 1px solid #000;
+            border-radius: 25px;
+            background-color: white;
+            cursor: pointer;
+}
+
+.browse-course{
+    width: 90%;
+    margin-top: 1%;
+    margin-left: 5%;
+    padding: 20px;
+}
+
+ /* 搜索框 */
+ .search-container {
+    margin: 20px 0;
+    position: relative;
+    width: 100%;
+}
+
+.search-container input[type="text"] {            
+    width: 100%;           
+    padding: 10px;          
+    border-radius: 30px;           
+    border: 1px solid #ddd;           
+    font-size: 16px;           
+    height: 6vh;
+}
+
+.filter-buttons {           
+    display: flex;            
+    gap: 10px;            
+    margin-bottom: 20px;    
+}
+        
+.filter-buttons button {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: 1px solid #000;
+    border-radius: 30px;
+    padding: 8px 15px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.filter-buttons button:hover {
+    background-color: #f0f0f0;
+}
+
+.filter-buttons button.active {
+    background-color: black;
+    color: white;
+}
+
+        .course-grid {
+            margin-top: 3%;
+            margin-bottom: 3%;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+
+        .course-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .course-card .label-new {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: green;
+            color: white;
+            font-size: 12px;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+
+        .course-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .course-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 1200px) {
+            .course-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .course-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+</style>
+</head>
+<header>
+    <div class="navbar">
+
+        <div class="logo">Brilliant</div>
+
+        <div class="nav-links">
+            <div class="home-icon mmicon">
+            <i class="fa-sharp-duotone fa-solid fa-house"></i>
+            <a href="index.html" style="margin-left: 10px;">主页</a>
+            </div>
+
+            <div class="course-icon mmicon">
+                <i class="fa-sharp-duotone fa-solid fa-book"></i>
+            <a href="Course.html" style="margin-left: 10px;">神秘之旅</a>
+            </div>
+
+            <div class="aboutus-icon mmicon">
+                <i class="fa-regular fa-address-card"></i>
+                <a href="Aboutus.html" style="margin-left: 10px;">关于我们</a>
+            </div>
+        </div>
+
+        <div class="search-bar" style="width: 400px; height: 40px; border: 2px solid #ccc; border-radius: 20px; position: relative;">
+            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);"></i>
+            <input type="text" placeholder="Search" style="padding-left: 30px; width: 100%; height: 100%; border: none; outline: none; border-radius: 20px;">
+        </div>
+        
+        <div class="cta-buttons">
+            <div class="start-trial">Start trial</div>
+            <div class="stats">
+                <span>0</span>
+            <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="menu-icon">☰</div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="Euler-tell">
+        <div class="title">欧拉问答</div>
+        <div class="subtitle">有问必答</div>
+
+        <div class="chat-container">
+            <div class="my-message">
+                <img src="img/student.jpg" alt="我的头像" class="avatar">
+                <div class="message-box my-box" contenteditable="true" id="user-input">
+                    请输入您的对话内容...
+                </div>
+                <button id="send-message" class="send-button">发送</button>
+
+            </div>
+        
+            <div class="other-message">
+                <div class="message-box other-box" id="bot-reply">
+                    <p>这是另一个人的对话内容。</p>
+                </div>
+                <img src="img/Euler.jpg" alt="另一个人的头像" class="avatar_Euler">
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="learn-path">
+        <div class="title">学海无涯</div>
+        <div class="subtitle">一步步揭开数学的奥秘</div>
+
+        <div class="path">
+            <div class="path-content">
+                <img src="icon-math.png" alt="Advanced Math Icon" class="icon">
+                <div class="path-info">
+                    <div class="recommended" >初级</div>
+                    <div class="path-title">基本数学</div>
+                    <div class="path-desc">了解并开始学习数学</div>
+                </div>
+            </div>
+            <button class="view-path-btn">View path</button>
+        </div>
+
+        <div class="path">
+            <div class="path-content">
+                <img src="icon-data.png" alt="Data Analysis Icon" class="icon">
+                <div class="path-info">
+                    <div class="recommended" style="background-color: #ffe5cc; color: #ff7a00;">中级</div>
+                    <div class="path-title">初等数学</div>
+                    <div class="path-desc">掌握基本的代数技巧、几何分析技巧</div>
+                </div>
+            </div>
+            <button class="view-path-btn">View path</button>
+        </div>
+
+        <div class="path">
+            <div class="path-content">
+                <img src="icon-foundation.png" alt="Foundational Math Icon" class="icon">
+                <div class="path-info">
+                    <div class="recommended" style="background-color: #e3ddd6; color: green;">高级</div>
+                    <div class="path-title">高等数学</div>
+                    <div class="path-desc">掌握微积分、线性代数等方面的基本技能。</div>
+                </div>
+            </div>
+            <button class="view-path-btn">View path</button>
+        </div>
+
+        <div class="path">
+            <div class="path-content">
+                <img src="icon-foundation.png" alt="Foundational Math Icon" class="icon">
+                <div class="path-info">
+                    <div class="recommended" style="background-color: rgb(157, 156, 156); color: black;">职业</div>
+                    <div class="path-title">数学研究</div>
+                    <div class="path-desc">选择一条前沿数学方向展开研究</div>
+                </div>
+            </div>
+            <button class="view-path-btn">View path</button>
+        </div>
+    </div>
+
+    <div class="browse-course">
+        <div class="title">浏览全部10+课程</div>
+        <div class="subtitle">理论+实践教学</div>
+
+    <!-- 搜索框 -->
+    <div class="search-container">
+        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);"></i>
+        <input type="text" placeholder="     Search">
+    </div>
+
+    <!-- 筛选标签 -->
+    <div class="filter-buttons"> 
+        <button class="active" data-target="grid1">函数</button>
+        <button data-target="grid2">数论</button>
+        <button data-target="grid3">Python</button>
+        <button data-target="grid4">平面几何</button>
+        <button data-target="grid5">立体几何</button>
+        <button data-target="grid6">C语言</button>
+        <button data-target="grid7">博弈论</button>
+    </div>
+
+    <!-- 函数模块 -->
+    <h2>函数</h2>
+    <div id="grid1" class="course-grid">
+        <div class="course-card">
+            <span class="label-new">NEW</span>
+            <img src="https://via.placeholder.com/100" alt="Real-World Algebra">
+            <h3>Real-World Algebra</h3>
+        </div>
+
+        <div class="course-card">
+            <span class="label-new">NEW</span>
+            <img src="https://via.placeholder.com/100" alt="How LLMs Work">
+            <h3>How LLMs Work</h3>
+        </div>
+
+        <div class="course-card">
+            <span class="label-new">NEW</span>
+            <img src="https://via.placeholder.com/100" alt="Clustering">
+            <h3>Clustering</h3>
+        </div>
+
+        <div class="course-card">
+            <span class="label-new">NEW</span>
+            <img src="https://via.placeholder.com/100" alt="Vectors">
+            <h3>Vectors</h3>
+        </div>
+
+        <div class="course-card">
+            <span class="label-new">NEW</span>
+            <img src="https://via.placeholder.com/100" alt="Designing Programs">
+            <h3>Designing Programs</h3>
+        </div>
+
+        <div class="course-card">
+            <span class="label-new">NEW</span>
+            <img src="https://via.placeholder.com/100" alt="Applied Python">
+            <h3>Applied Python</h3>
+        </div>
+        </div>
+    
+
+    <h2>数论</h2>
+<div id="grid2" class="course-grid">
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Real-World Algebra">
+        <h3>Real-World Algebra</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="How LLMs Work">
+        <h3>How LLMs Work</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Clustering">
+        <h3>Clustering</h3>
+    </div>
+</div>
+
+<h2>Python</h2>
+<div id="grid3" class="course-grid">
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Real-World Algebra">
+        <h3>Real-World Algebra</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="How LLMs Work">
+        <h3>How LLMs Work</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Clustering">
+        <h3>Clustering</h3>
+    </div>
+</div>
+
+<h2>平面几何</h2>
+<div id="grid4" class="course-grid">
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Real-World Algebra">
+        <h3>Real-World Algebra</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="How LLMs Work">
+        <h3>How LLMs Work</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Clustering">
+        <h3>Clustering</h3>
+    </div>
+</div>
+
+<h2>立体几何</h2>
+<div id="grid5" class="course-grid">
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Real-World Algebra">
+        <h3>Real-World Algebra</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="How LLMs Work">
+        <h3>How LLMs Work</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Clustering">
+        <h3>Clustering</h3>
+    </div>
+</div>
+
+<h2>C语言</h2>
+<div id="grid6" class="course-grid">
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Real-World Algebra">
+        <h3>Real-World Algebra</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="How LLMs Work">
+        <h3>How LLMs Work</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Clustering">
+        <h3>Clustering</h3>
+    </div>
+</div>
+
+<h2>博弈论</h2>
+<div id="grid7" class="course-grid">
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Real-World Algebra">
+        <h3>Real-World Algebra</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="How LLMs Work">
+        <h3>How LLMs Work</h3>
+    </div>
+
+    <div class="course-card">
+        <span class="label-new">NEW</span>
+        <img src="https://via.placeholder.com/100" alt="Clustering">
+        <h3>Clustering</h3>
+    </div>
+</div>
+</div>
+
+
+</main>
+
+<script>
+    // 获取所有模块
+    const icons = document.querySelectorAll('.mmicon');
+
+    // 为每个模块添加点击事件监听器
+    icons.forEach(icon => {
+    icon.addEventListener('click', function() {
+        // 移除其他模块的 active 类
+        icons.forEach(i => i.classList.remove('active'));
+        // 当前点击的模块添加 active 类
+        icon.classList.add('active');
+    });
+});
+
+// 获取所有按钮和对应的课程模块
+const buttons = document.querySelectorAll('.filter-buttons button');
+    const grids = document.querySelectorAll('div[class^="course-grid"]');
+
+    // 为每个按钮添加点击事件
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            // 移除所有按钮的 active 样式
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // 当前按钮添加 active 样式
+            button.classList.add('active');
+
+            // 滚动到对应课程模块
+            grids[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    });
+
+
+
+    document.getElementById('send-message').addEventListener('click', function() {
+    // 获取用户输入的内容
+    const userInput = document.getElementById('user-input').innerText.trim();
+    
+    // 如果用户没有输入内容，则不发送
+    if (!userInput) {
+        alert('请输入内容');
+        return;
+    }
+
+    // 清空用户输入框内容并显示已发送内容
+    const myMessageBox = document.getElementById('user-input');
+    myMessageBox.innerHTML = `<p>${userInput}</p>`;
+
+    // 调用大模型 API 来生成回复
+    fetch('https://api.deepseek.com/chat/completions', {  
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer sk-0eb88dd086c7430f9cc4a330c571e704'
+        },
+        body: JSON.stringify({
+         model: 'deepseek-chat',
+            messages: [
+                { content: userInput,role: 'user' }
+            ],
+            stream: false,
+            temperature: 0
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // 显示大模型的回复
+        const content = data.choices[0] ? data.choices[0].message['content'] : 'No response content';
+                document.getElementById('bot-reply').innerText = content;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        const botReplyBox = document.getElementById('bot-reply');
+        botReplyBox.innerHTML = `<p>自动回复失败，请稍后再试。</p>`;
+    });
+});
+
+
+</script>
+
+</body>
+</html>

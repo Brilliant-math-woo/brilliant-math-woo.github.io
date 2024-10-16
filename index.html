@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brilliant Home Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <style>
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color:white;
+}
+
+header {
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*主页开始的播放视频*/
+#video-container {
+    position: relative;
+    width: 400px; /* Adjust the width to match your video size */
+    margin: 20px auto;
+    border: 1px solid #ccc;
+}
+
+#video-container video {
+    width: 100%;
+    height: auto;
+}
+
+/*可爱的字样*/
+.cute-font {
+  font-family: 'ZCOOL KuaiLe', sans-serif;
+  font-size: 64px;
+  color: yellowgreen; 
+}
+
+/*关闭播放视频*/
+#close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 5px;
+}
+
+#close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hidden {
+    display: none;
+}
+
+/* 字样 */
+#welcome-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+    z-index: 100;
+}
+
+/* 特效 */
+@keyframes fall {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+    100% {
+        top: 100vh;
+        opacity: 1;
+    }
+}
+
+/* 特效样式 */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    background-color: red; /* Can change to random colors */
+    animation: fall 3s linear infinite;
+    opacity: 0.8;
+}
+
+/*导航栏*/
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航栏logo*/
+.navbar .logo {
+    margin-left: 3%;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+/*导航栏导航页*/
+.navbar .nav-links{
+   margin-left: -5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航页间距*/
+.navbar .nav-links a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+/*某些页面icon*/
+.home-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航栏搜索框*/
+.search-bar{
+    position: relative;
+}
+
+.search-bar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/*导航栏其他元素*/
+.cta-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .cta-buttons a{
+    margin-right: 50px;
+}
+
+.cta-buttons .start-trial {
+    margin-left: -70%;
+    font-size: smaller;
+    display: inline-block;  
+    border: 2px solid green; 
+    background-color: transparent; 
+    color: green; 
+    font-weight: bold; 
+    padding: 10px 20px;
+    border-radius: 20px; 
+    cursor: pointer; 
+    text-align: center; 
+}
+
+.cta-buttons .start-trial:hover{
+    background-color: green; /* 悬停时填充绿色 */
+    color: white; /* 悬停时字体变为白色 */
+}
+
+.stats {
+    margin-left: 19%;
+    display: flex;
+    align-items: center;
+}
+
+.stats span {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.menu-icon {
+    margin-left: 9%;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* 主要内容 */
+.main-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 左列 */
+.left-column{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* 右列 */
+.right-column {
+  width: 60%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* 欢迎模块 */
+.welcome-section {
+  background-color: white; 
+  padding: 20px;
+} 
+
+/* 学习模块 成就模块 */
+.learning-section,
+.premium-section {
+  background-color: #fff; /* Example background color */
+  margin-bottom: 20px;
+  padding: 20px;
+  flex-grow: 1; /* Ensures both sections grow equally */
+}
+
+.premium-section {
+  margin-bottom: 0; /* Remove margin for the last section */
+}
+
+.welcome-section h1 {
+  margin-top: 10%;
+  margin-left: 25%;
+    margin-bottom: 20px;
+}
+
+/* 欢迎模块的状态卡片 */
+.stats-card {
+    margin-left: 25%;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    background: linear-gradient(to bottom, transparent 53%, #f0f0f0 53%); /* 上部60%透明，下部40%浅灰色 */
+    position: relative; 
+}
+
+/* 状态分数 */
+.score {
+    font-size: 48px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+/* 日期 */
+.days {
+  margin-top: -10%;
+  margin-bottom: -15%;
+    display: flex;
+    justify-content: space-around; 
+    align-items: center; 
+    height: 200px; 
+    position: relative; 
+    z-index: 1; 
+}
+
+.day-item {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.circle {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    border: 2px solid #ccc; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 5px; 
+    transition: border 0.3s; 
+}
+
+.circle.active {
+    border: 2px solid blue; 
+    font-weight: bold; 
+}
+
+/* 习惯模块 */
+.habit-section h2 {
+    font-size: 18px;
+    margin: 20px 0;
+  
+}
+
+.habit-section ul {
+    list-style-type: none;
+
+}
+
+.habit-section ul li {
+    margin-bottom: 10px;
+
+}
+
+/* 神秘之旅解锁模块 */
+.xp-unlock {
+    margin-top: 20px;
+}
+
+.xp-unlock h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* 学习卡片模块 */
+.learning-section {
+    width: 75%;
+    margin-bottom: 10%;
+}
+
+.learning-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: linear-gradient(to bottom, #e0e7ff 63%,transparent 63%); 
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    position: absolute;
+    height: 40%;
+    width: 40%;
+}
+
+.learning-card h3 {
+    margin-top: 40%;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.learning-card button {
+    width: 400px;
+    background-color: #000;
+    color: white;
+    border: none;
+    font-weight:bolder;
+    font-size: 1.0rem;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+/* 成就模块 */
+.premium-section {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.premium-card{
+    background: linear-gradient(135deg, #fefefe 0%, #fffacd 100%);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    position: absolute;
+    height: 20%;
+    width: 40%;
+}
+
+.premium-card p {
+            width: 50%; /* 限制文本内容占卡片的左 50% */
+            font-family: 'Microsoft YaHei', sans-serif; /* 使用微软雅黑字体 */
+            font-weight: bold; /* 加粗文本 */
+            word-wrap: break-word; /* 自动换行 */
+        }
+
+.premium-section .highlight {
+    color: #e94e77;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.premium-section .learn-more {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight:bolder;
+    font-size: 1.0rem;
+    width: 200px;
+    height: 40px;
+    margin-top: 3%;
+    margin-left: -50%;
+}
+
+/* 默认样式 */
+.mmicon {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* 鼠标悬停时的样式 */
+.mmicon:hover {
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+/* 选中状态样式 */
+.mmicon.active {
+    color: black;
+    border-bottom: 2px solid black;
+}
+
+
+  </style>
+</head>
+<body>
+    <header>
+      <!-- <div id="video-container">
+        <video id="intro-video" width="400" autoplay muted>
+            <source src="your-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button id="close-btn">&times;</button>
+    </div> -->
+    
+    <div id="welcome-message" class="hidden">
+      <p class="cute-font">快来开启你和再临的数学之旅吧！</p>
+    </div>
+    
+    <div id="confetti-container" class="hidden"></div> 
+        <div class="navbar">
+
+            <div class="logo">Brilliant</div>
+
+            <div class="nav-links">
+                <div class="home-icon mmicon">
+                <i class="fa-sharp-duotone fa-solid fa-house"></i>
+                <a href="index.html" style="margin-left: 10px;">主页</a>
+                </div>
+
+                <div class="course-icon mmicon">
+                    <i class="fa-sharp-duotone fa-solid fa-book"></i>
+                <a href="Course.html" style="margin-left: 10px;">神秘之旅</a>
+                </div>
+
+                <div class="aboutus-icon mmicon">
+                    <i class="fa-regular fa-address-card"></i>
+                    <a href="Aboutus.html" style="margin-left: 10px;">关于我们</a>
+                </div>
+            </div>
+
+            <div class="search-bar" style="width: 400px; height: 40px; border: 2px solid #ccc; border-radius: 20px; position: relative;">
+                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);"></i>
+                <input type="text" placeholder="Search" style="padding-left: 30px; width: 100%; height: 100%; border: none; outline: none; border-radius: 20px;">
+            </div>
+            
+            <div class="cta-buttons">
+                <div class="start-trial">Start trial</div>
+                <div class="stats">
+                    <span>0</span>
+                <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div class="menu-icon">☰</div>
+            </div>
+        </div>
+    </header>
+    <main class="main-container">
+      <div class="left-column">
+        <section class="welcome-section">
+            <h1>Welcome, 光</h1>
+            <div class="stats-card">
+                <div class="score">0<i class="fa-solid fa-bolt" style="margin-left: 20px;"></i></div>
+                <div class="days">
+                  <div class="day-item">
+                      <div class="circle">
+                          <i class="fa-solid fa-bolt"></i>
+                      </div>
+                      <span>M</span>
+                  </div>
+                  <div class="day-item">
+                      <div class="circle">
+                          <i class="fa-solid fa-bolt"></i>
+                      </div>
+                      <span>T</span>
+                  </div>
+                  <div class="day-item">
+                      <div class="circle">
+                          <i class="fa-solid fa-bolt"></i>
+                      </div>
+                      <span>W</span>
+                  </div>
+                  <div class="day-item">
+                      <div class="circle">
+                              <i class="fa-solid fa-bolt"></i>
+                          </div>
+                          <span>Th</span>
+                  </div>
+                  <div class="day-item">
+                      <div class="circle">
+                          <i class="fa-solid fa-bolt"></i>
+                      </div>
+                      <span>F</span>
+                  </div>
+              </div>
+              
+              <div class="habit-section">
+                    <h2>START A LEARNING HABIT</h2>
+                    <ul>
+                        <li><input type="checkbox"> Start your first course</li>
+                        <li><input type="checkbox"> Finish your first lesson</li>
+                        <li><input type="checkbox"> Continue your streak tomorrow</li>
+                    </ul>
+              </div>
+            </div>
+        </section>
+        <section>
+          <div class="xp-unlock">
+            <h3>UNLOCK LEAGUES</h3>
+            <p>0 of 175 XP</p>
+        </div>
+        </section>
+      </div>
+        <div class="right-column">
+        <section class="learning-section">
+            <h2>Start learning</h2>
+            <div class="learning-card">
+                <div class="learning-card-content">
+                    <h3>Logic</h3>
+                    <button>Start course</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="premium-section">
+            <div class="premium-card">
+            <p>通过系统性、创新性、可视化方法学习数学的人提高能力的效率是正常人的:
+                <span class="highlight">
+                    6倍！
+                </span> 
+            </p>
+            <i class="fa-solid fa-trophy"></i>
+            <button class="learn-more">Learn more</button>
+        </div>
+        </section>
+        </div>
+    </main>
+
+
+    <script>
+        // 获取所有模块
+const icons = document.querySelectorAll('.mmicon');
+
+// 为每个模块添加点击事件监听器
+icons.forEach(icon => {
+    icon.addEventListener('click', function() {
+        // 移除其他模块的 active 类
+        icons.forEach(i => i.classList.remove('active'));
+        // 当前点击的模块添加 active 类
+        icon.classList.add('active');
+    });
+});
+
+const videoContainer = document.getElementById('video-container');
+const closeButton = document.getElementById('close-btn');
+const introVideo = document.getElementById('intro-video');
+const welcomeMessage = document.getElementById('welcome-message');
+const confettiContainer = document.getElementById('confetti-container');
+
+// 展示欢迎信息
+function showWelcomeMessage() {
+    videoContainer.classList.add('hidden');
+    welcomeMessage.classList.remove('hidden');
+    createConfetti();
+}
+
+// 初始化掉落序列
+function createConfetti() {
+    const confettiCount = 100;
+    const colors = ['#ff0', '#f00', '#0f0', '#00f', '#ff5', '#5f5', '#55f'];
+
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+         confetti.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Vary animation duration
+        confettiContainer.appendChild(confetti);
+    }
+}
+
+introVideo.addEventListener('play', () => {
+    setTimeout(showWelcomeMessage, 5000);
+});
+
+// 9s消失
+function startTimer() {
+    welcomeMessage.classList.remove('hidden'); // 出现
+    confettiContainer.classList.remove('hidden'); // 出现
+    createConfetti(); // 生成序列
+
+    setTimeout(() => {
+        welcomeMessage.classList.add('hidden'); // 欢迎字体5s结束
+        confettiContainer.innerHTML = ''; // 移除html
+        confettiContainer.classList.add('hidden'); // 隐藏彩带效果
+    }, 9000);
+}
+
+function handleCloseButtonClick() {
+    videoContainer.style.display = 'none'; // 隐藏视频播放
+    startTimer(); // 开始计时
+}
+
+introVideo.addEventListener('ended', showWelcomeMessage);
+
+//关掉视频
+closeButton.addEventListener('click', handleCloseButtonClick);
+
+// 获取当前星期几（0-6），0为星期天，1为星期一，依此类推
+const currentDay = new Date().getDay(); // 0-6
+const dayMap = {
+    1: 0, // 星期一
+    2: 1, // 星期二
+    3: 2, // 星期三
+    4: 3, // 星期四
+    5: 4  // 星期五
+};
+
+// 在相应的圆圈上添加“active”类
+if (dayMap[currentDay]) {
+    const activeIndex = dayMap[currentDay];
+    const circles = document.querySelectorAll('.circle');
+    circles[activeIndex].classList.add('active');
+}
+    </script>
+</body>
+</html>

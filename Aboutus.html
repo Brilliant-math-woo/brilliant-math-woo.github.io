@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<title>Brilliant Home</title>
+<style>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color:white;
+}
+
+header {
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航栏*/
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航栏logo*/
+.navbar .logo {
+    margin-left: 3%;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+/*导航栏导航页*/
+.navbar .nav-links{
+   margin-left: -5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航页间距*/
+.navbar .nav-links a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+/*某些页面icon*/
+.home-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*导航栏搜索框*/
+.search-bar{
+    position: relative;
+}
+
+.search-bar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/*导航栏其他元素*/
+.cta-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .cta-buttons a{
+    margin-right: 50px;
+}
+
+.cta-buttons .start-trial {
+    margin-left: -70%;
+    font-size: smaller;
+    display: inline-block;  
+    border: 2px solid green; 
+    background-color: transparent; 
+    color: green; 
+    font-weight: bold; 
+    padding: 10px 20px;
+    border-radius: 20px; 
+    cursor: pointer; 
+    text-align: center; 
+}
+
+.cta-buttons .start-trial:hover{
+    background-color: green; /* 悬停时填充绿色 */
+    color: white; /* 悬停时字体变为白色 */
+}
+
+.stats {
+    margin-left: 19%;
+    display: flex;
+    align-items: center;
+}
+
+.stats span {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.menu-icon {
+    margin-left: 9%;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* 默认样式 */
+.mmicon {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* 鼠标悬停时的样式 */
+.mmicon:hover {
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+/* 选中状态样式 */
+.mmicon.active {
+    color: black;
+    border-bottom: 2px solid black;
+}
+
+/* 为 sidenav 内的链接设置样式 */
+#mySidenav a {
+  position: fixed;
+  left: -100px; /* 将它们放在屏幕之外 */
+  transition: 0.3s; /* 在悬停时添加过渡 */
+  padding: 15px; /* 15px 内边距 */
+  width: 120px; /* 设置特定宽度 */
+  text-decoration: none; /* 删除下划线 */
+ font-size: 20px; /* 增加字体大小 */
+  color: white; /* 白色文本颜色 */
+  border-radius: 0 5px 5px 0; /* 右上角和右下角的圆角 */
+}
+
+#mySidenav a:hover {
+  left: 0; /* 鼠标悬停时，使元素按应有的方式显示 */
+}
+
+/* about 链接:距离顶部 20 像素，背景为绿色 */
+
+
+#blog {
+  top: 80px;
+  background-color: #2196F3; /* Blue */
+}
+
+#projects {
+  top: 140px;
+  background-color: #f44336; /* Red */
+}
+
+#contact {
+  top: 200px;
+  background-color: #555 /* 浅黑色 */
+}
+
+#about {
+  top: 260px;
+  background-color: #4CAF50;
+}
+
+.heading {
+    margin-top: 50px;
+    line-height: 1.2;
+    font-family: Arial, sans-serif, __coFoRobertFont_aa644d, __coFoRobertFont_Fallback_aa644d, Georgia, serif;
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.text {
+    margin-top: 4%;
+    font-size: 1.125rem;
+    line-height: 1.7;   
+    text-indent: 2em; 
+}
+
+.line {
+    margin-top: 5%;
+    opacity: 1;
+    border-width: 0px 0px 2px;
+    border-image: initial;
+    border-color: var(--chakra-colors-black);
+    border-style: solid;
+    width: 100%;
+}
+
+.main_div{
+    display: flex;
+    -webkit-box-align: center;
+    /* align-items: center; */
+    flex-direction: column;
+    gap: 0.5rem;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.center_div {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.margin_div {
+  margin: 40px;        /* 外边距 */
+  padding: 20px;       /* 内边距 */
+  border: 1px solid #0a0a0a; /* 边框，可选 */
+  background-color: #f9f9f9; /* 背景颜色，可选 */
+  border-radius: 8px;  /* 圆角效果 */
+}
+
+.text_div {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+}
+
+.text_div p{
+    color:cadetblue;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    text-align: left;
+    padding: 5px;
+}
+
+
+.card {
+    width: 100%;
+    height: 300px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 12px;
+    border-color: #000000;
+    border-width: 2px;
+    border-style: solid;
+    background-color: #ffffff;
+}
+
+.text-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 垂直居中 */
+    margin-left: 40px;
+}
+
+ul.list-vertical {
+    margin-top: 5%;
+    list-style-type: none;
+    display: flex;
+    margin-bottom: 0;
+    gap: 2em;
+    justify-content: center;
+}
+
+
+ul.list-horizontal {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    gap: 2em;
+    justify-content: center;
+}
+
+li {
+    list-style-type: none;
+    flex: 1;
+}
+
+.img-title {
+    display: flex;        /* 使用flex布局 */
+    align-items: center;
+    justify-content: center;
+    /* height: 50px;  */
+    font-size: 1.4em;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.img-title-small {
+    display: flex;        /* 使用flex布局 */
+    align-items: center;
+    justify-content: center;
+    /* height: 50px;  */
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
+    margin-top: -20px;
+}
+
+.headshot {
+    border-radius: 50%;
+    text-align: center;
+}
+
+
+img {
+    width: 100%;
+}
+
+</style>
+</head>
+<header>
+    <div class="navbar">
+
+        <div class="logo">Brilliant</div>
+
+        <div class="nav-links">
+            <div class="home-icon mmicon">
+            <i class="fa-sharp-duotone fa-solid fa-house"></i>
+            <a href="index.html" style="margin-left: 10px;">主页</a>
+            </div>
+
+            <div class="course-icon mmicon">
+                <i class="fa-sharp-duotone fa-solid fa-book"></i>
+            <a href="Course.html" style="margin-left: 10px;">神秘之旅</a>
+            </div>
+
+            <div class="aboutus-icon mmicon">
+                <i class="fa-regular fa-address-card"></i>
+                <a href="Aboutus.html" style="margin-left: 10px;">关于我们</a>
+            </div>
+        </div>
+
+        <div class="search-bar" style="width: 400px; height: 40px; border: 2px solid #ccc; border-radius: 20px; position: relative;">
+            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);"></i>
+            <input type="text" placeholder="Search" style="padding-left: 30px; width: 100%; height: 100%; border: none; outline: none; border-radius: 20px;">
+        </div>
+        
+        <div class="cta-buttons">
+            <div class="start-trial">Start trial</div>
+            <div class="stats">
+                <span>0</span>
+            <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="menu-icon">☰</div>
+        </div>
+    </div>
+</header>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="#brand_story" id="blog">品牌故事</a>
+        <a href="#team" id="projects">负责人</a>
+        <a href="#method" id="contact">运营模式</a>
+        <a href="#tel" id="about">报名方式</a>
+    </div>
+
+    <div class="main_div">
+        <section id="about_us">
+            <h1 class="heading">About us</h1>
+            <ul class="list-vertical">
+                <li>
+                    <div class="text-box">
+                    <p class="text">我们相信：<strong>数学的奥妙不是几个公式，几本书，几堂课能说清楚的</strong>，也不是任何人，甚至是计算机能表达清楚的。数学的体验在于自己，唯有沉下心去感受，你才能找到真正的数学，才能领悟数学的宏大与奇妙。</p>
+                    <p class="text">我们想为所有的初中生提供一个深入挖掘数学的平台，我们想做的不仅仅是知识传授，提高成绩，更重要的是<strong>通过一系列精心设计的课程和实践活动，激发学生的数学意识，数学感性。</strong>通过参与数学建模的学习，学生们不仅能加深对数学概念的理解，还能学会如何将理论知识应用于解决现实世界的问题。</p>
+                    </div>
+                </li>
+                <li style="flex: 1.5;">
+                    <img
+                    src="https://smms.app/image/xyQMGr4U5FNqHi3"
+                    alt="Grapefruit slice atop a pile of other slices" /></li>
+            </ul>
+        </section>
+        <hr aria-orientation="horizontal" class="line">
+
+        <section id = "brand_story">
+            <h1 class="heading">品牌故事</h1>
+            <ul class="list-vertical">
+                <li> 
+                    <ul class="list-horizontal;">
+                        <li style="flex: 2; text-align: center;"><div class="card">
+                            <img
+                            src="https://images.unsplash.com/photo-1509869175650-a1d97972541a?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Grapefruit slice atop a pile of other slices" />
+                        </div>
+                        <div class="img-title">同济大学数学建模社经历</div>
+                        </li>
+                        <li>
+                            <div class="text_div">
+                                <p>同济大学数学建模协会成立于2003年，是由校团委指导，依托数学科学学院的学术性学生组织</p>
+                                <p>社团希望能够引导同济学生利用数学方法解决实际问题，挖掘数学建模的魅力，培育学生的创新能力、协作能力、逻辑思维和表达沟通能力等</p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li> 
+                    <ul class="list-horizontal;">
+                        <li style="flex: 2; text-align: center;"><div class="card">
+                            <img
+                            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=3064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Grapefruit slice atop a pile of other slices" />
+                        </div>
+                        <div class="img-title">同济附中数模共建活动</div>
+                        </li>
+                        <li>
+                            <div class="text_div">
+                                <p>自2023年起，同济大学数学建模社团与嘉定附中建立了紧密的合作关系，共同开展了“数学建模知识共享”项目</p>
+                                <p>该项目旨在通过定期的知识交流活动，涵盖了基础数学理论讲解、案例分析以及建模实践操作等多个方面，旨在帮助学生掌握数学建模的基本方法，并学会运用这些方法解决实际问题</p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li> 
+                    <ul class="list-horizontal;">
+                        <li style="flex: 2; text-align: center;"><div class="card">
+                            <img
+                            src="https://plus.unsplash.com/premium_photo-1661964320064-ca1bfb994d11?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Grapefruit slice atop a pile of other slices" />
+                        </div>
+                        <div class="img-title">数模共建新形式</div>
+                        </li>
+                        <li>
+                            <div class="text_div">
+                                <p>2024年秋，由同济大学数学建模社骨干成员自行开展数模共建的拓展课程。该课程旨在延续数模共建的核心内容，并且利用额外的教学时间进一步拓宽授课范围，让对数学尤为感兴趣的学生接触到更多的知识</p>
+                                <p>该系列课程跳出原有的活动形式，采取线上线下双结合，加强老师与同学的互动性，并且首次创建教学网站，进一步完善教学体系</p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <hr aria-orientation="horizontal" class="line">
+
+        <section id="team">
+            <h1 class="heading">负责人</h1>
+            <ul class="list-vertical">
+                <li style="max-width: 300px;">
+                    <ul class="list-horizontal" style="text-align: center;">
+                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Sam-cmKbPI.svg" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
+                        <li>
+                            <div>
+                                <p class="img-title">杨光</p>
+                                <p>Head of Creative Operations</p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="text-box">
+                        <p class="text">作为一名来自同济大学计算机科学与技术专业的三年级学生，我对技术充满热情，并致力于将所学应用于解决实际问题。在校期间，我积极参与各类学术和技术活动，不断提升自己。以下是我在学术和技术方面的成就和经历：</p>
+
+                        <p class="text">全国大学生数学竞赛三等奖：凭借扎实的数学基础和出色的解题能力，在全国大学生数学竞赛中获得二等奖，展现了我在数学领域的实力。</p>
+                        <p class="text">连续两年参与同济数模共建活动：作为主要参与者之一，我连续两年参加了同济大学与嘉定附中之间的数学建模共建项目，负责向中学生讲授数学建模相关知识，并指导他们完成实际项目。这段经历不仅增强了我的教学能力，也让我深刻体会到教育的意义和社会责任的重要性。</p>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="list-vertical">
+                <li style="max-width: 300px;">
+                    <ul class="list-horizontal" style="text-align: center;">
+                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Cole-8UAYRp.png" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
+                        <li>
+                            <div>
+                                <p class="img-title">何锦洋</p>
+                                <p>Head of Creative Operations</p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="text-box">
+                        <p class="text">作为一名来自同济大学计算机科学与技术专业的三年级学生，我对技术充满热情，并致力于将所学应用于解决实际问题。在校期间，我积极参与各类学术和技术活动，不断提升自己。以下是我在学术和技术方面的成就和经历：</p>
+
+                        <p class="text">全国大学生数学竞赛三等奖：凭借扎实的数学基础和出色的解题能力，在全国大学生数学竞赛中获得二等奖，展现了我在数学领域的实力。</p>
+                        <p class="text">连续两年参与同济数模共建活动：作为主要参与者之一，我连续两年参加了同济大学与嘉定附中之间的数学建模共建项目，负责向中学生讲授数学建模相关知识，并指导他们完成实际项目。这段经历不仅增强了我的教学能力，也让我深刻体会到教育的意义和社会责任的重要性。</p>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="list-vertical" style="gap: 7em;">
+                <li style="max-width: 150px;">
+                    <ul class="list-horizontal" style="text-align: center;">
+                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Maxwell-n1U1rf.svg" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
+                        <div>
+                            <p class="img-title-small">无名氏</p>
+                            <p>Member</p>
+                        </div>                        
+                    </ul>
+                </li>
+                <li style="max-width: 150px;">
+                    <ul class="list-horizontal" style="text-align: center;">
+                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Ian-hL1ql5.png" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
+                        <div>
+                            <p class="img-title-small">无名氏</p>
+                            <p>Member</p>
+                        </div>                        
+                    </ul>
+                </li>
+                <li style="max-width: 150px;">
+                    <ul class="list-horizontal" style="text-align: center;">
+                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Hannah-fJJ8EY.svg" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
+                        <div>
+                            <p class="img-title-small">无名氏</p>
+                            <p>Member</p>
+                        </div>                        
+                    </ul>
+                </li>
+                <li style="max-width: 150px;">
+                    <ul class="list-horizontal" style="text-align: center;">
+                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Evan-3bzRR5.svg" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
+                        <div>
+                            <p class="img-title-small">无名氏</p>
+                            <p>Member</p>
+                        </div>                        
+                    </ul>
+                </li>
+            </ul>
+            
+        </section>
+        <hr aria-orientation="horizontal" class="line">
+
+        <section id="method">
+            <h1 class="heading">运营模式</h1>
+            <ul class="list-vertical" style="gap: 10em;">
+                <li>
+                    <div class="text-box">
+                    <p class="text">我们以同济大学数学建模社团与同济附中及嘉定附中之间的共建活动为基础，通过多年的积累，我们已经形成了稳定的教学体系和良好的口碑。在此基础上，我们进一步拓展了线下付费模式教学，推出了一系列面向更广泛学生的高级课程，并邀请了经验丰富的教师，确保教学质量。</p>
+                    <p class="text">为了更好地管理和优化教学资源，我们开发了一个统一的在线教学平台。该平台不仅支持课程查看、资料下载等功能，还集成了先进的大模型技术，为学生提供个性化的学习建议和实时答疑服务。通过这种线上线下相结合的模式，我们希望能够为更多学生提供优质、高效的数学建模教育资源。</p>
+                    </div>
+                </li>
+                <li style="flex: 1;">
+                    <img
+                    src="img/robot2.png"
+                    alt= "运营模式"/></li>
+            </ul>
+        </section>        
+        <hr aria-orientation="horizontal" class="line">
+
+        <section id="tel">
+            <h1 class="heading">联系报名</h1>
+            <div class="margin_div">
+                <div class="center_div">
+                    <div style="width: 30%;"><img src="https://media.istockphoto.com/id/1494464996/zh/%E7%85%A7%E7%89%87/hand-holding-smartphone-isolated-on-white-background-clipping-path.jpg?s=2048x2048&w=is&k=20&c=KOBTGuvKiZioyH7RxBp_BqbUNsfOsU9uyK7YBSTxY2s="/></div>
+                    <p class="text" style="font-weight: 800;">如果您对我们的课程感兴趣，请添加负责人微信进行报名：xxxxxxxxxxxx<p>
+
+                </div>
+            </div>
+        </section>
+        
+    </div>
+    
+</body>
+
+<script>
+        // 获取所有模块
+        const icons = document.querySelectorAll('.mmicon');
+
+// 为每个模块添加点击事件监听器
+icons.forEach(icon => {
+    icon.addEventListener('click', function() {
+        // 移除其他模块的 active 类
+        icons.forEach(i => i.classList.remove('active'));
+        // 当前点击的模块添加 active 类
+        icon.classList.add('active');
+    });
+});
+
+</script>
+
+</html>
+
+
