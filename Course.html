@@ -6,6 +6,19 @@
 <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css">
+<style>
+@media (max-width: 1500px) { body { padding: 30px; } }
+body { box-sizing: border-box;
+    min-width: 200px;
+    max-width: 1500px;
+    margin: 20px;
+    line-height: 1.6;    
+    padding: 30px; }
+</style>
 <title>Brilliant Home</title>
 <style>
 
@@ -239,10 +252,10 @@ header {
 }
 
 .other-box {
-    background: linear-gradient(135deg, #ffcc80, #fb8c00);  
+    /* background: linear-gradient(135deg, #ffcc80, #fb8c00);  
     color: white;
     text-align: left;
-    text-align: left;
+    text-align: left; */
     border-radius: 20px;
     padding: 15px;
     position: relative;
@@ -867,7 +880,7 @@ const buttons = document.querySelectorAll('.filter-buttons button');
     .then(data => {
         // 显示大模型的回复
         const content = data.choices[0] ? data.choices[0].message['content'] : 'No response content';
-                document.getElementById('bot-reply').innerText = content;
+        document.getElementById('text').innerHTML = marked.parse(content);           
     })
     .catch(error => {
         console.error('Error:', error);
