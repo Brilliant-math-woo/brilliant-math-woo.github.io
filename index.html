@@ -191,7 +191,6 @@ header {
 }
 
 .stats {
-    margin-left: 19%;
     display: flex;
     align-items: center;
 }
@@ -357,6 +356,10 @@ header {
     width: 40%;
 }
 
+.learning-card-content{
+    margin-top: -30%;
+}
+
 .learning-card h3 {
     margin-top: 40%;
     margin-bottom: 20px;
@@ -374,6 +377,8 @@ header {
     padding: 10px 20px;
     border-radius: 20px;
 }
+
+
 
 /* 成就模块 */
 .premium-section {
@@ -486,7 +491,9 @@ header {
             </div>
             
             <div class="cta-buttons">
+                <a href="Course.html">
                 <div class="start-trial">Start trial</div>
+            </a>
                 <div class="stats">
                     <span>0</span>
                 <i class="fa-solid fa-bolt"></i>
@@ -498,7 +505,7 @@ header {
     <main class="main-container">
       <div class="left-column">
         <section class="welcome-section">
-            <h1>Welcome, 光</h1>
+            <h1>嘿，goodjob!</h1>
             <div class="stats-card">
                 <div class="score">0<i class="fa-solid fa-bolt" style="margin-left: 20px;"></i></div>
                 <div class="days">
@@ -555,9 +562,12 @@ header {
         <section class="learning-section">
             <h2>Start learning</h2>
             <div class="learning-card">
+                <img src="https://www.helloimg.com/i/2024/10/17/67110d433ae5a.png" style="width: 24%;height: 36%;margin-top: 7%;">
                 <div class="learning-card-content">
-                    <h3>Logic</h3>
-                    <button>Start course</button>
+                    <h3>平面几何</h3>
+                    <a href="Course.html">
+                    <button id="startCourseButton">Start course</button>
+                </a>
                 </div>
             </div>
         </section>
@@ -569,8 +579,11 @@ header {
                     6倍！
                 </span> 
             </p>
-            <i class="fa-solid fa-trophy"></i>
-            <button class="learn-more">Learn more</button>
+            <img src="https://www.helloimg.com/i/2024/10/17/671116b8793e7.png" alt="1"  style="width: 25%;height: 100%; margin-left: 60% ;margin-top: -15%;">
+            </img>
+            <a href="Course.html">
+            <button class="learn-more" style="position:absolute;margin-left: -80%;">Learn more</button>
+        </a>
         </div>
         </section>
         </div>
@@ -662,6 +675,7 @@ if (dayMap[currentDay]) {
     const circles = document.querySelectorAll('.circle');
     circles[activeIndex].classList.add('active');
 }
+
     </script>
 </body>
 </html>
