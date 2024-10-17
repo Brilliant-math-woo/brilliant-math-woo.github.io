@@ -278,13 +278,22 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center; /* 垂直居中 */
-    margin-left: 40px;
+    margin-left: 40px;    
+}
+
+.text-box p{
+    margin-top: 10px;
+    font-size: 1.125rem;
+    line-height: 1.7;   
+    text-indent: 2em; 
 }
 
 ul.list-vertical {
     margin-top: 5%;
     list-style-type: none;
     display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+    flex-direction: column;
     margin-bottom: 0;
     gap: 2em;
     justify-content: center;
@@ -292,17 +301,57 @@ ul.list-vertical {
 
 
 ul.list-horizontal {
+    margin-top: 5%;
     list-style-type: none;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
     margin-bottom: 0;
     gap: 2em;
     justify-content: center;
 }
 
+ul.list-horizontal li{
+    min-width: 300px;
+}
+
+ul.head-list {
+    margin-top: 5%;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-bottom: 0;
+    gap: 7em;
+    justify-content: center;
+}
+
+ul.head-list li{
+    min-width: 100px;
+    max-width: 150px;
+}
+
 li {
     list-style-type: none;
     flex: 1;
+}
+
+ul.list-text {
+    display: flex;
+    flex-direction: column; /* 默认值，可以省略 */
+    flex-wrap: wrap; /* 允许换行 */
+    padding: 2px; /* 移除默认的内边距 */
+}
+
+ul.list-text li{
+    list-style-type: decimal;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2px;
+    
+    font-size: 0.95em;
+    font-weight: bold;
+    color:#1d1b1b
 }
 
 .img-title {
@@ -335,6 +384,7 @@ li {
 
 img {
     width: 100%;
+    height: 100%;
 }
 
 </style>
@@ -388,7 +438,7 @@ img {
     <div class="main_div">
         <section id="about_us">
             <h1 class="heading">About us</h1>
-            <ul class="list-vertical">
+            <ul class="list-horizontal">
                 <li>
                     <div class="text-box">
                     <p class="text">我们相信：<strong>数学的奥妙不是几个公式，几本书，几堂课能说清楚的</strong>，也不是任何人，甚至是计算机能表达清楚的。数学的体验在于自己，唯有沉下心去感受，你才能找到真正的数学，才能领悟数学的宏大与奇妙。</p>
@@ -405,15 +455,15 @@ img {
 
         <section id = "brand_story">
             <h1 class="heading">品牌故事</h1>
-            <ul class="list-vertical">
+            <ul class="list-horizontal">
                 <li> 
-                    <ul class="list-horizontal;">
+                    <ul class="list-vertical;">
                         <li style="flex: 2; text-align: center;"><div class="card">
                             <img
                             src="https://images.unsplash.com/photo-1509869175650-a1d97972541a?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                             alt="Grapefruit slice atop a pile of other slices" />
                         </div>
-                        <div class="img-title">同济大学数学建模社经历</div>
+                        <div class="img-title">同济大学数学建模社团</div>
                         </li>
                         <li>
                             <div class="text_div">
@@ -434,7 +484,7 @@ img {
                         </li>
                         <li>
                             <div class="text_div">
-                                <p>自2023年起，同济大学数学建模社团与嘉定附中建立了紧密的合作关系，共同开展了“数学建模知识共享”项目</p>
+                                <p>2023年起，同济大学数学建模社团与同济附中建立了紧密的合作关系，共同开展“数学建模知识共享”项目</p>
                                 <p>该项目旨在通过定期的知识交流活动，涵盖了基础数学理论讲解、案例分析以及建模实践操作等多个方面，旨在帮助学生掌握数学建模的基本方法，并学会运用这些方法解决实际问题</p>
                             </div>
                         </li>
@@ -463,57 +513,63 @@ img {
 
         <section id="team">
             <h1 class="heading">负责人</h1>
-            <ul class="list-vertical">
+            <ul class="list-horizontal">
                 <li style="max-width: 300px;">
                     <ul class="list-horizontal" style="text-align: center;">
                         <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Sam-cmKbPI.svg" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
                         <li>
                             <div>
                                 <p class="img-title">杨光</p>
-                                <p>Head of Creative Operations</p>
+                                <p>Head of Teaching Department</p>
                             </div>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <div class="text-box">
-                        <p class="text">作为一名来自同济大学计算机科学与技术专业的三年级学生，我对技术充满热情，并致力于将所学应用于解决实际问题。在校期间，我积极参与各类学术和技术活动，不断提升自己。以下是我在学术和技术方面的成就和经历：</p>
-
-                        <p class="text">全国大学生数学竞赛三等奖：凭借扎实的数学基础和出色的解题能力，在全国大学生数学竞赛中获得二等奖，展现了我在数学领域的实力。</p>
-                        <p class="text">连续两年参与同济数模共建活动：作为主要参与者之一，我连续两年参加了同济大学与嘉定附中之间的数学建模共建项目，负责向中学生讲授数学建模相关知识，并指导他们完成实际项目。这段经历不仅增强了我的教学能力，也让我深刻体会到教育的意义和社会责任的重要性。</p>
+                        <p>来自同济大学软件工程专业，从高中参与数学竞赛，积累丰厚的数学知识，连续三年任职家教老师，参加教育培训，在数学，心理学，计算机科学，软件科学等领域有丰富的经验。</p>
+                        <ul class="list-text">
+                            <li>全国高中数学联赛省队</li>
+                            <li>参与全国大学生统计建模竞赛，荣获国家二等奖</li>
+                            <li>算法竞赛ICPC区域赛金牌，上海市金牌</li>
+                        </ul>
+                        <p>同济数模共建活动负责人，十段线上线下竞赛培训经历，凭借清晰的逻辑，优秀的沟通能力和自身过硬的数学知识水平，帮助学生考上中科大少年班、进入上海市数学竞赛省队、获得美国中学生数学建模竞赛F奖等卓越成绩。</p>
                     </div>
                 </li>
             </ul>
 
-            <ul class="list-vertical">
+            <ul class="list-horizontal">
                 <li style="max-width: 300px;">
                     <ul class="list-horizontal" style="text-align: center;">
-                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Cole-8UAYRp.png" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
+                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Evan-3bzRR5.svg" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
                         <li>
                             <div>
                                 <p class="img-title">何锦洋</p>
-                                <p>Head of Creative Operations</p>
+                                <p>Head of Academic Affairs</p>
                             </div>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <div class="text-box">
-                        <p class="text">作为一名来自同济大学计算机科学与技术专业的三年级学生，我对技术充满热情，并致力于将所学应用于解决实际问题。在校期间，我积极参与各类学术和技术活动，不断提升自己。以下是我在学术和技术方面的成就和经历：</p>
-
-                        <p class="text">全国大学生数学竞赛三等奖：凭借扎实的数学基础和出色的解题能力，在全国大学生数学竞赛中获得二等奖，展现了我在数学领域的实力。</p>
-                        <p class="text">连续两年参与同济数模共建活动：作为主要参与者之一，我连续两年参加了同济大学与嘉定附中之间的数学建模共建项目，负责向中学生讲授数学建模相关知识，并指导他们完成实际项目。这段经历不仅增强了我的教学能力，也让我深刻体会到教育的意义和社会责任的重要性。</p>
+                        <p>来自同济大学计算机科学与技术专业，在数学和物理方面有着扎实的知识功底，在技术实践层面，致力于将理论知识应用于实际问题。在校期间，参与多项学科竞赛，获得同济大学本科生奖学金一等奖。</p>
+                        <ul class="list-text">
+                            <li>参与大学生数学竞赛，凭借扎实的数学基础，荣获全国二等奖</li>
+                            <li>参与VEX机器人竞赛，代表同济大学前往美国参加全球锦标赛，凭借出色的数学建模和编程能力，斩获Think Award世锦赛奖杯</li>
+                        </ul>
+                        <p>连续两年参与同济数模共建活动：是主要的参与者之一。凭借自身对机器学习，计算机组成原理，概率论，微积分等知识熟练的掌握，向中学生科普数学建模，计算机相关知识，并借助编程等手段，指导学生完成实际项目，得到学生们强烈称赞。</p>
                     </div>
                 </li>
             </ul>
 
-            <ul class="list-vertical" style="gap: 7em;">
-                <li style="max-width: 150px;">
+            <ul class="head-list">
+                <li>
                     <ul class="list-horizontal" style="text-align: center;">
-                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Maxwell-n1U1rf.svg" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
+                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Lorena-Mq6mzq.svg" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
                         <div>
-                            <p class="img-title-small">无名氏</p>
-                            <p>Member</p>
+                            <p class="img-title-small">刘亦铭</p>
+                            <p>同济计算机</p>
+                            <div class="text_div" style="margin: 0px"><p>上海中学优秀毕业生</p></div>
                         </div>                        
                     </ul>
                 </li>
@@ -521,26 +577,29 @@ img {
                     <ul class="list-horizontal" style="text-align: center;">
                         <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Ian-hL1ql5.png" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
                         <div>
-                            <p class="img-title-small">无名氏</p>
-                            <p>Member</p>
+                            <p class="img-title-small">白亦籓</p>
+                            <p>北大数学</p>
+                            <div class="text_div" style="margin: 0px"><p>CMO银牌</p></div>
                         </div>                        
                     </ul>
                 </li>
                 <li style="max-width: 150px;">
                     <ul class="list-horizontal" style="text-align: center;">
-                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Hannah-fJJ8EY.svg" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
+                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Kenji-gP6lNN.svg" class="headshot" data-testid="about_staff_member_avatar"></li>
                         <div>
-                            <p class="img-title-small">无名氏</p>
-                            <p>Member</p>
+                            <p class="img-title-small">杨憬焓</p>
+                            <p>清华计算机</p>
+                            <div class="text_div" style="margin: 0px"><p>高考数学全省前10</p></div>
                         </div>                        
                     </ul>
                 </li>
                 <li style="max-width: 150px;">
                     <ul class="list-horizontal" style="text-align: center;">
-                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Evan-3bzRR5.svg" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
+                        <li><img src="https://ds055uzetaobb.cloudfront.net/staff-avatars/Cole-8UAYRp.png" loading="lazy" class="headshot" data-testid="about_staff_member_avatar"></li>
                         <div>
-                            <p class="img-title-small">无名氏</p>
-                            <p>Member</p>
+                            <p class="img-title-small">尹卓航</p>
+                            <p>北航计算机</p>
+                            <div class="text_div" style="margin: 0px"><p>优秀主讲师</p></div>
                         </div>                        
                     </ul>
                 </li>
@@ -551,11 +610,11 @@ img {
 
         <section id="method">
             <h1 class="heading">运营模式</h1>
-            <ul class="list-vertical" style="gap: 10em;">
+            <ul class="list-horizontal" style="gap: 10em;">
                 <li>
                     <div class="text-box">
-                    <p class="text">我们以同济大学数学建模社团与同济附中及嘉定附中之间的共建活动为基础，通过多年的积累，我们已经形成了稳定的教学体系和良好的口碑。在此基础上，我们进一步拓展了线下付费模式教学，推出了一系列面向更广泛学生的高级课程，并邀请了经验丰富的教师，确保教学质量。</p>
-                    <p class="text">为了更好地管理和优化教学资源，我们开发了一个统一的在线教学平台。该平台不仅支持课程查看、资料下载等功能，还集成了先进的大模型技术，为学生提供个性化的学习建议和实时答疑服务。通过这种线上线下相结合的模式，我们希望能够为更多学生提供优质、高效的数学建模教育资源。</p>
+                    <p class="text">我们以同济大学数学建模社团与同济附中及嘉定附中之间的共建活动为基础，通过多年的积累，我们已经形成<strong>了稳定的教学体系并且收获良好的口碑</strong>。在此基础上，我们进一步拓展了线下付费模式教学，推出了一系列面向更广泛学生的高级课程，并邀请了经验丰富的教师，确保教学质量。</p>
+                    <p class="text">为了更好地管理和优化教学资源，我们开发了一个<strong>统一的在线教学平台</strong>。该平台不仅支持课程查看、资料下载等功能，还<strong>集成了先进的大模型技术，为学生提供个性化的学习建议和实时答疑服务</strong>。通过这种线上线下相结合的模式，我们希望能够为更多学生提供优质、高效的数学建模教育资源。</p>
                     </div>
                 </li>
                 <li style="flex: 1;">
@@ -570,8 +629,12 @@ img {
             <h1 class="heading">联系报名</h1>
             <div class="margin_div">
                 <div class="center_div">
-                    <div style="width: 30%;"><img src="https://media.istockphoto.com/id/1494464996/zh/%E7%85%A7%E7%89%87/hand-holding-smartphone-isolated-on-white-background-clipping-path.jpg?s=2048x2048&w=is&k=20&c=KOBTGuvKiZioyH7RxBp_BqbUNsfOsU9uyK7YBSTxY2s="/></div>
-                    <p class="text" style="font-weight: 800;">如果您对我们的课程感兴趣，请添加负责人微信进行报名：xxxxxxxxxxxx<p>
+                    <div style="width: 15%;"><img src="https://img.zcool.cn/community/013b8a56ddc67132f875520fc6b127.jpg@2o.jpg"/></div>
+                    <p class="text" style="font-weight: 800;">如果您对我们的课程感兴趣，请添加负责人微信进行报名：<p>
+                    <ul class="list-text" style="width: 40%;">
+                        <li>杨光:&nbsp;&nbsp;&nbsp;&nbsp;&emsp;yg15655673619</li>
+                        <li>何锦洋:&emsp;hjy1745112542</li>
+                    </ul>
 
                 </div>
             </div>
